@@ -25,13 +25,43 @@ const MaintContainerDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 100vh;
+  height: 100%;
 `;
 
 const LeftDiv = styled.div<{ isSmallSize: boolean }>`
   background: lightblue;
-  flex: 0 0 ${props => (props.isSmallSize ? '40px' : '100px')};
-  transition: flex-basis 500ms ease-in-out;
+  overflow: hidden visible;
+
+  flex: 0 0 ${props => (props.isSmallSize ? '60px' : '140px')};
+  transition: flex-basis 500ms ease-out;
+
+  display: grid;
+  grid-template-rows: 50px 1fr;
+  grid-template-columns: 60px 1fr;
+
+  grid-template-areas:
+    'a a'
+    'b c';
+`;
+
+const ButtonAreaDiv = styled.div`
+  grid-area: a;
+  display: flex;
+  justify-content: space-between;
+  background: lightpink;
+  flex: 1 1 auto;
+`;
+
+const LeftDivA = styled.div`
+  grid-area: b;
+  background: red;
+  transition: all 500ms ease-out;
+`;
+
+const LeftDivB = styled.div<{ isSmallSize: boolean }>`
+  grid-area: c;
+  background: blue;
+  
 `;
 
 const MainDiv = styled.div`
@@ -39,28 +69,16 @@ const MainDiv = styled.div`
   flex: 1 1 auto;
 `;
 
-const ButtonAreaDiv = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  background: lightpink;
-  flex: 1 1 auto;
-`;
-
-const isScreenSizeSmall = (size: number) => {
-  return size < 900;
-};
-
 export default function MenuPage() {
-  const [isCollapsed, setBarToCollapse] = useState(
-    isScreenSizeSmall(window.innerWidth)
-  );
   let ss = useGetScreenWidth();
+  let isScreenSizeSmall = ss < 900;
+  const [isCollapsed, setBarToCollapse] = useState(isScreenSizeSmall);
 
-  if (isScreenSizeSmall(ss) && !isCollapsed) {
+  if (isScreenSizeSmall && !isCollapsed) {
     setBarToCollapse(true);
   }
   const handleClick = (e: ButtonEvent) => {
-    const isCollapsedL = !isCollapsed || isScreenSizeSmall(ss);
+    const isCollapsedL = !isCollapsed || isScreenSizeSmall;
     setBarToCollapse(isCollapsedL);
   };
 
@@ -71,11 +89,22 @@ export default function MenuPage() {
           <IconButton
             color="primary"
             aria-label="add an alarm"
+            disableRipple
             onClick={handleClick}
           >
-            {isCollapsed ? <KeyboardTabIcon /> : <KeyboardBackspaceIcon />}
+            {isCollapsed ? <KeyboardTabIcon /> : <></>}
+            
+          </IconButton>
+          <IconButton
+            color="primary"
+            aria-label="add an alarm"
+            onClick={handleClick}
+          >
+            <KeyboardBackspaceIcon />
           </IconButton>
         </ButtonAreaDiv>
+        <LeftDivA>A</LeftDivA>
+        <LeftDivB isSmallSize={isCollapsed}>dsdsdB</LeftDivB>
       </LeftDiv>
       <MainDiv>MainDiv{ss}</MainDiv>
     </MaintContainerDiv>

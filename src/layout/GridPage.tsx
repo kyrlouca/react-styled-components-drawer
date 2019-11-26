@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import TopMenu from '../components/TopMenu';
-import MainArea from '../components/MainArea'
-import dButtom from '../components/MyDisabledButton';
-
+import ManuPage from './MenuPage';
 
 const BoxDiv = styled.div`
   border: 3px solid black;
@@ -19,29 +17,25 @@ const MainGrid = styled.div`
 
   grid-template-areas:
     'a a a'
-    'b c c'
-    'd d d';
+    'b b b'
+    'c c c';
 `;
 
 const TopAreaDiv = styled.div`
   grid-area: a;
+  background: lightgreen;
   /* border: 4px transparent solid; */
   /* border-radius: 16px; */
 `;
 
-const SideDiv = styled.div`
-  grid-area: b;
-  background: lightblue;
-`;
-
 const MainDiv = styled.div`
-  grid-area: c;
+  grid-area: b;
   background: whitesmoke;
 `;
 
 const BottomDiv = styled.div`
-  grid-area: d;
-  background: yellow;
+  grid-area: c;
+  background: lightcyan;
 `;
 
 export default function GridPage() {
@@ -51,10 +45,9 @@ export default function GridPage() {
         <TopMenu />
       </TopAreaDiv>
       <MainDiv>
-        
-        <MainArea/>
+        <ManuPage />
       </MainDiv>
-      <SideDiv>SIdeDive</SideDiv>
+
       <BottomDiv>Bottom div</BottomDiv>
     </MainGrid>
   );

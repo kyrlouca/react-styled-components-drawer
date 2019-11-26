@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 const useStyles = makeStyles({
   root: {
     color: 'primary',
-    background: 'yellow'
+    background: 'whiteSmoke'
   }
 });
 
@@ -51,8 +51,8 @@ const MenuItemDiv2 = styled(Button)`
     color: white;
   }
   & .MuiButton-label {
-    color: blue;
-    background-color: green;
+    color: red;
+    background-color: white;
   }
 `;
 

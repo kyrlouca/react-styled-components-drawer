@@ -6,7 +6,6 @@ import green from '@material-ui/core/colors/green';
 import red from '@material-ui/core/colors/red';
 
 import GridPage from './layout/GridPage';
-import MenuPage from './layout/MenuPage';
 
 const theme = createMuiTheme({
   palette: {
@@ -20,7 +19,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <ThemeProvider2 theme={theme}>
-        <MenuPage />
+        <GridPage />
       </ThemeProvider2>
     </ThemeProvider>
   );
