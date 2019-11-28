@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import TopMenu from '../components/TopMenu';
 import ManuPage from './MenuPage';
+import OuterPage from './OuterPage'
 
 const BoxDiv = styled.div`
   border: 3px solid black;
@@ -45,7 +46,7 @@ export default function GridPage() {
         <TopMenu />
       </TopAreaDiv>
       <MainDiv>
-        <ManuPage />
+        <OuterPage />
       </MainDiv>
 
       <BottomDiv>Bottom div</BottomDiv>

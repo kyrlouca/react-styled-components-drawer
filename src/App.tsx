@@ -7,6 +7,7 @@ import red from '@material-ui/core/colors/red';
 
 import GridPage from './layout/GridPage';
 
+
 const theme = createMuiTheme({
   palette: {
     primary: purple,
