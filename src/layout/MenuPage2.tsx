@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import IconButton, { IconButtonProps } from '@material-ui/core/IconButton';
+import SvgIcon from '@material-ui/core/SvgIcon';
 import KeyboardTabIcon from '@material-ui/icons/KeyboardTab';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
-import menu from '../assets/icons/menu.png';
+import menuPngI from '../assets/icons/menu.png';
+import leftArrowPngI from '../assets/icons/leftArrow.png';
+import leftArrowSVG from '../assets/icons/iconmonstr-arrow-1.svg';
+
 import '../App.css';
 
 type ButtonEvent = React.MouseEvent<HTMLButtonElement>;
@@ -39,16 +43,16 @@ const TopDiv = styled.div`
 const LowerDiv = styled.div`
   background: red;
   flex: 1 1 auto;
-  flex-flow: row nowrap;
+  /* Display */
   display: flex;
-  /* transition : all 700ms ease-out; */
+  flex-flow: row nowrap;
 `;
 
 const RightDiv = styled.div<{ isCollapsed: boolean }>`
   background: yellow;
   overflow: hidden;
-  width: ${props => (props.isCollapsed ? '0' : '500px')};
-  max-width: ${props => (props.isCollapsed ? '0' : '200px')};
+  width: ${props => (props.isCollapsed ? '0' : '999px')};
+  max-width: ${props => (props.isCollapsed ? '0' : '150px')};
   transition: width 600ms ease-out, max-width 600ms ease-out;
 `;
 
@@ -56,6 +60,35 @@ const LeftDiv = styled.div`
   background: green;
   flex: 1 1 auto;
 `;
+
+const XImg = styled.img`
+  flex: 1 1 auto;
+  display: block;
+  background-image: url(${leftArrowSVG});
+  /* background: transparent; */
+`;
+
+const XImgBtn = styled.button`
+  width: 30px;
+  background-image: url(${leftArrowSVG});
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-size:70%;
+  background-position:center;
+  color: white;
+`;
+
+const XBtn = styled.button`
+  display: flex;
+  height: 50px;
+  width: 80px;
+  background-color: transparent;
+  color: white;
+`;
+
+const humberger = './menu.png';
+const leftArrow = '../assets/icons/menu.png';
+const leftArrow1 = 'leftArrow.png';
 
 const IButton = (props: IconButtonProps) => (
   <IconButton disableRipple aria-label="collapse the menu " {...props} />
@@ -76,25 +109,20 @@ export default function MenuPage2() {
     setBarToCollapse(mustCollapse);
   };
 
-  const ImgH = styled.img`
-    display: block;
-    height: 30px;
-    width: 30px;
-    z-index: 1000;
-    background: transparent;
-  `;
-
-const humberger = './menu.png';
-const leftArrow = '../assets/icons/menu.png';
-  const leftArrow1 = 'leftArrow.png';
   return (
     <OuterDiv>
       <TopDiv>
         <IButton onClick={handleClick}>
           {isCollapsed ? <KeyboardTabIcon /> : <KeyboardBackspaceIcon />}
         </IButton>
-        <ImgH src={humberger} alt="Hum missing" />
-        <ImgH src={leftArrow1} alt="Arrow missing" />
+        <IButton>
+          <XImg src={leftArrowSVG} />
+        </IButton>
+
+        <XImgBtn></XImgBtn>
+        <XBtn>
+          <XImgBtn />
+        </XBtn>
       </TopDiv>
       <LowerDiv>
         <LeftDiv>leftA</LeftDiv>
