@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import IconButton, { IconButtonProps } from '@material-ui/core/IconButton';
 import KeyboardTabIcon from '@material-ui/icons/KeyboardTab';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
+import menu from '../assets/icons/menu.png';
+import '../App.css';
 
 type ButtonEvent = React.MouseEvent<HTMLButtonElement>;
 
@@ -37,8 +39,8 @@ const TopDiv = styled.div`
 const LowerDiv = styled.div`
   background: red;
   flex: 1 1 auto;
-  display: flex;
   flex-flow: row nowrap;
+  display: flex;
   /* transition : all 700ms ease-out; */
 `;
 
@@ -70,18 +72,33 @@ export default function MenuPage2() {
 
   const handleClick = (e: ButtonEvent) => {
     const mustCollapse = !isCollapsed || isScreenSizeSmall;
+    console.log('jey');
     setBarToCollapse(mustCollapse);
   };
 
+  const ImgH = styled.img`
+    display: block;
+    height: 30px;
+    width: 30px;
+    z-index: 1000;
+    background: transparent;
+  `;
+
+const humberger = './menu.png';
+const leftArrow = '../assets/icons/menu.png';
+  const leftArrow1 = 'leftArrow.png';
   return (
     <OuterDiv>
       <TopDiv>
         <IButton onClick={handleClick}>
           {isCollapsed ? <KeyboardTabIcon /> : <KeyboardBackspaceIcon />}
         </IButton>
+        <ImgH src={humberger} alt="Hum missing" />
+        <ImgH src={leftArrow1} alt="Arrow missing" />
       </TopDiv>
       <LowerDiv>
         <LeftDiv>leftA</LeftDiv>
+
         <RightDiv isCollapsed={isCollapsed}>RightB</RightDiv>
       </LowerDiv>
     </OuterDiv>

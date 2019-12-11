@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import TopMenu from '../components/TopMenu';
 import ManuPage from './MenuPage';
-import OuterPage from './OuterPage'
+import OuterPage from './OuterPage';
 
 const BoxDiv = styled.div`
   border: 3px solid black;
@@ -36,8 +36,9 @@ const MainDiv = styled.div`
 
 const BottomDiv = styled.div`
   grid-area: c;
-  background: lightcyan;
+  background: lightgreen;
 `;
+
 
 export default function GridPage() {
   return (
@@ -49,7 +50,9 @@ export default function GridPage() {
         <OuterPage />
       </MainDiv>
 
-      <BottomDiv>Bottom div</BottomDiv>
+      <BottomDiv>
+        Bottom div 
+      </BottomDiv>
     </MainGrid>
   );
 }

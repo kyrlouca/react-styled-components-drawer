@@ -2,7 +2,7 @@ import React from 'react';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import styled, { ThemeProvider as ThemeProvider2 } from 'styled-components';
 import purple from '@material-ui/core/colors/purple';
-import green from '@material-ui/core/colors/green';
+import blue from '@material-ui/core/colors/blue';
 import red from '@material-ui/core/colors/red';
 
 import GridPage from './layout/GridPage';
@@ -11,7 +11,7 @@ import GridPage from './layout/GridPage';
 const theme = createMuiTheme({
   palette: {
     primary: purple,
-    secondary: red,
+    secondary: blue,
     error: red
   }
 });

@@ -20,3 +20,24 @@
 .App-link {
   color: #09d3ac;
 }
+
+.Logo {
+  display:block;
+  height:30px;
+  width:30px;
+  color:blue;
+  /* background: red; */
+  z-index: 1000;
+  
+}
+
+.ImgStyle {
+  display:block;
+  height:30px;
+  width:30px;
+  color:white;
+  z-index: 1;
+  background-image: url("./menu.png");
+  
+  
+}
