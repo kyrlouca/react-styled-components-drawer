@@ -3,7 +3,8 @@ import styled from 'styled-components';
 
 import { ReactComponent as ArrowRightRC } from '../assets/icons/arrow-right-Google.svg';
 import { ReactComponent as ArrowCollapseRC } from '../assets/icons/arrow-collapse-left.svg';
-import ArrowRightSVG from '../assets/icons/arrow-right-Google.svg';
+import { ReactComponent as HumbergerRC } from '../assets/icons/menu-hamburger.svg';
+
 
 import '../App.css';
 
@@ -31,7 +32,7 @@ const OuterDiv = styled.div`
 `;
 
 const TopDiv = styled.div`
-  background: smokeWhite;
+  background: whitesmoke;
   flex: 0 0 50px;
   display: flex;
   justify-content: flex-end;
@@ -58,54 +59,41 @@ const LeftDiv = styled.div`
   flex: 1 1 auto;
 `;
 
-const XImgBtn = styled.button`
-  width: 30px;
-  background-image: url(${ArrowRightSVG});
-  background-repeat: no-repeat;
-  background-color: transparent;
-  background-size: 80%;
-  background-position: center;
-  background: transparent;
-`;
-
 const XBtn = styled.button`
   width: 50px;
   height: 50px;
   border: 0;
   border-radius: 25px;
-  color: blue;
-  /* background: transparent , linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ); */
-  background: transparent ;
-  opacity:0.1;
-  &:active{
-    background: blue;
+  background: lightblue;
+  
+  &:active {
+    filter: brightness(80%);
   }
   &:hover {
-    background: blue;
+    filter: brightness(80%);
   }
-  &:focus{
-    outline:none;
+  &:focus {
+    outline: none;
   }
 `;
 
 const XArrowCollapse = styled(ArrowCollapseRC)`
-  fill: red;
-  height: 50%;
+  fill: blue;
+  height: 40%;
   margin: auto;
   &:hover {
     cursor: pointer;
   }
   transition: all 0.4s ease 0s;
 `;
-const XArrowRight = styled(ArrowRightRC)`
-  fill: red;
-  height: 30%;
+const XHumburger = styled(HumbergerRC)`
+  fill: blue;
+  /* height: 80%; */
   margin: auto;
   &:hover {
     cursor: pointer;
   }
 `;
-
 
 export default function MenuPage2() {
   const sw = useGetScreenWidth();
@@ -126,7 +114,8 @@ export default function MenuPage2() {
     <OuterDiv>
       <TopDiv>
         <XBtn onClick={handleClick}>
-          {isCollapsed ? <XArrowCollapse /> : <XArrowRight />}
+          {isCollapsed ?  <XHumburger
+         />:<XArrowCollapse />}
         </XBtn>
       </TopDiv>
       <LowerDiv>
