@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import IconButton, { IconButtonProps } from '@material-ui/core/IconButton';
-import SvgIcon from '@material-ui/core/SvgIcon';
-import KeyboardTabIcon from '@material-ui/icons/KeyboardTab';
-import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
-import menuPngI from '../assets/icons/menu.png';
-import leftArrowPngI from '../assets/icons/leftArrow.png';
-import leftArrowSVG from '../assets/icons/iconmonstr-arrow-1.svg';
+
+import { ReactComponent as ArrowRightRC } from '../assets/icons/arrow-right-Google.svg';
+import { ReactComponent as ArrowCollapseRC } from '../assets/icons/arrow-collapse-left.svg';
+import ArrowRightSVG from '../assets/icons/arrow-right-Google.svg';
 
 import '../App.css';
 
@@ -61,38 +58,54 @@ const LeftDiv = styled.div`
   flex: 1 1 auto;
 `;
 
-const XImg = styled.img`
-  flex: 1 1 auto;
-  display: block;
-  background-image: url(${leftArrowSVG});
-  /* background: transparent; */
-`;
-
 const XImgBtn = styled.button`
   width: 30px;
-  background-image: url(${leftArrowSVG});
+  background-image: url(${ArrowRightSVG});
   background-repeat: no-repeat;
   background-color: transparent;
-  background-size:70%;
-  background-position:center;
-  color: white;
+  background-size: 80%;
+  background-position: center;
+  background: transparent;
 `;
 
 const XBtn = styled.button`
-  display: flex;
+  width: 50px;
   height: 50px;
-  width: 80px;
-  background-color: transparent;
-  color: white;
+  border: 0;
+  border-radius: 25px;
+  color: blue;
+  /* background: transparent , linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ); */
+  background: transparent ;
+  opacity:0.1;
+  &:active{
+    background: blue;
+  }
+  &:hover {
+    background: blue;
+  }
+  &:focus{
+    outline:none;
+  }
 `;
 
-const humberger = './menu.png';
-const leftArrow = '../assets/icons/menu.png';
-const leftArrow1 = 'leftArrow.png';
+const XArrowCollapse = styled(ArrowCollapseRC)`
+  fill: red;
+  height: 50%;
+  margin: auto;
+  &:hover {
+    cursor: pointer;
+  }
+  transition: all 0.4s ease 0s;
+`;
+const XArrowRight = styled(ArrowRightRC)`
+  fill: red;
+  height: 30%;
+  margin: auto;
+  &:hover {
+    cursor: pointer;
+  }
+`;
 
-const IButton = (props: IconButtonProps) => (
-  <IconButton disableRipple aria-label="collapse the menu " {...props} />
-);
 
 export default function MenuPage2() {
   const sw = useGetScreenWidth();
@@ -112,16 +125,8 @@ export default function MenuPage2() {
   return (
     <OuterDiv>
       <TopDiv>
-        <IButton onClick={handleClick}>
-          {isCollapsed ? <KeyboardTabIcon /> : <KeyboardBackspaceIcon />}
-        </IButton>
-        <IButton>
-          <XImg src={leftArrowSVG} />
-        </IButton>
-
-        <XImgBtn></XImgBtn>
-        <XBtn>
-          <XImgBtn />
+        <XBtn onClick={handleClick}>
+          {isCollapsed ? <XArrowCollapse /> : <XArrowRight />}
         </XBtn>
       </TopDiv>
       <LowerDiv>

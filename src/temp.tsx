@@ -1,9 +1,4 @@
-import React from 'react'
-
+import React from 'react';
 export default function temp() {
-  return (
-    <div>
-      hello r
-    </div>
-  )
+  return <div>hello r</div>;
 }
