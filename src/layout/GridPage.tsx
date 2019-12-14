@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import TopMenu from '../components/TopMenu';
-import ManuPage from './MenuPage';
 import OuterPage from './OuterPage';
 
 const BoxDiv = styled.div`

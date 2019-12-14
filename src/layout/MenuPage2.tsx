@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-
-import { ReactComponent as ArrowRightRC } from '../assets/icons/arrow-right-Google.svg';
 import { ReactComponent as ArrowCollapseRC } from '../assets/icons/arrow-collapse-left.svg';
 import { ReactComponent as HumbergerRC } from '../assets/icons/menu-hamburger.svg';
 
