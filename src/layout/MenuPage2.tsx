@@ -70,7 +70,7 @@ const XBtn = styled.button`
     filter: brightness(80%);
   }
   &:hover {
-    filter: brightness(80%);
+    filter: brightness(70%);
   }
   &:focus {
     outline: none;

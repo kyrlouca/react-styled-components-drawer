@@ -10,7 +10,7 @@ import GridPage from './layout/GridPage';
 
 const theme = createMuiTheme({
   palette: {
-    primary: purple,
+    primary: purple, 
     secondary: blue,
     error: red
   }
