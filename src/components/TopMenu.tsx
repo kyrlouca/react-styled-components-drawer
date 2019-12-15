@@ -1,42 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
-
-const StyledButton = styled.button`
-  &&& {
-    background: blue;
-    border-radius: 3px;
-    border: 0;
-    color: red;
-    height: 48px;
-    padding: 0 30px;
-    box-shadow: 0 3px 5px 2px rgba(255, 105, 135, 0.3);
-    margin-left: auto;
-  }
+const PaperDiv = styled.div`
+  background: whitesmoke;
+  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.3);
 `;
-
- 
-
-
 
 const MenuDiv = styled.div`
-  &&& {
-    /* background: primary; */
-    /* color: white; */
-    display: flex;
-    justify-content: flex-start;
-    height: 100%;
-    flex-flow: row nowrap;
-    align-items: center;
-  }
+  background: whitesmoke;  
+  display: flex;
+  justify-content: flex-start;
+  height: 100%;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin: 0;
+  padding: 0;
 `;
 
-// <Paper className={classes.root}>
 export default function TopMenu() {
-  return (
-    <MenuDiv>
-      Manu div
-    </MenuDiv>
-  );
+  return <MenuDiv>Manu div4</MenuDiv>;
 }

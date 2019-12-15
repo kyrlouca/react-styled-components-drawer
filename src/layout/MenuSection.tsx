@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { ReactComponent as ArrowCollapseRC } from '../assets/icons/arrow-collapse-left.svg';
 import { ReactComponent as HumbergerRC } from '../assets/icons/menu-hamburger.svg';
+import { ReactComponent as ArrowRightRC } from '../assets/icons/arrow-right-Google.svg';
 
-
-import '../App.css';
-
+/* 
+The MenuSection consists of three parts
+1. the Left part (menu bar and menu items icons )
+2. the Right Part (menu items description )
+ */
 type ButtonEvent = React.MouseEvent<HTMLButtonElement>;
 
 const useGetScreenWidth = () => {
@@ -21,40 +24,51 @@ const useGetScreenWidth = () => {
   return ws;
 };
 
-const OuterDiv = styled.div`
+const MenuOuterDiv = styled.div`
+  box-shadow: 3px 0px 4px 2px rgba(0, 0, 0, 0.3);
+  /* box-shadow: 4px 0px 4px 2px rgba(0, 0, 0, 0.2); */
+
   margin: 0;
-  padding: 0;
+  margin-right: 5px;
   height: 100%;
   display: flex;
   flex-direction: column;
 `;
 
-const TopDiv = styled.div`
-  background: whitesmoke;
+// background: linear-gradient(#006A97,#0195CD );
+// background-image: linear-gradient(rgb(0, 106, 151), rgb(1, 149, 205));
+
+const MenuTopDiv = styled.div`
+  /* background: linear-gradient(#006a97, #0195cd); */
+  background: rgb(0, 106, 151);
   flex: 0 0 50px;
   display: flex;
   justify-content: flex-end;
 `;
 
-const LowerDiv = styled.div`
-  background: red;
+const MenuLowDiv = styled.div`
   flex: 1 1 auto;
+
   /* Display */
   display: flex;
   flex-flow: row nowrap;
 `;
 
 const RightDiv = styled.div<{ isCollapsed: boolean }>`
-  background: yellow;
+  background: #0195cd;
   overflow: hidden;
+  padding-left:5px;
   width: ${props => (props.isCollapsed ? '0' : '999px')};
   max-width: ${props => (props.isCollapsed ? '0' : '150px')};
   transition: width 600ms ease-out, max-width 600ms ease-out;
+  
 `;
 
 const LeftDiv = styled.div`
-  background: green;
+  background: linear-gradient(to right, #006a97, #0195cd);
+  border-right: 1px black solid;
   flex: 1 1 auto;
+  
 `;
 
 const XBtn = styled.button`
@@ -63,7 +77,7 @@ const XBtn = styled.button`
   border: 0;
   border-radius: 25px;
   background: lightblue;
-  
+
   &:active {
     filter: brightness(80%);
   }
@@ -93,7 +107,11 @@ const XHumburger = styled(HumbergerRC)`
   }
 `;
 
-export default function MenuPage2() {
+const KIcons = styled.div`
+  margin: 10px;
+`;
+
+export default function MenuSection() {
   const sw = useGetScreenWidth();
   const isScreenSizeSmall = sw < 900;
   const [isCollapsed, setBarToCollapse] = useState(isScreenSizeSmall);
@@ -109,18 +127,27 @@ export default function MenuPage2() {
   };
 
   return (
-    <OuterDiv>
-      <TopDiv>
+    <MenuOuterDiv>
+      <MenuTopDiv>
         <XBtn onClick={handleClick}>
-          {isCollapsed ?  <XHumburger
-         />:<XArrowCollapse />}
+          {isCollapsed ? <XHumburger /> : <XArrowCollapse />}
         </XBtn>
-      </TopDiv>
-      <LowerDiv>
-        <LeftDiv>leftA</LeftDiv>
+      </MenuTopDiv>
+      <MenuLowDiv>
+        <LeftDiv>
+          <KIcons>
+            <ArrowRightRC />
+          </KIcons>
+          <KIcons>
+            <ArrowCollapseRC />
+          </KIcons>
+        </LeftDiv>
 
-        <RightDiv isCollapsed={isCollapsed}>RightB</RightDiv>
-      </LowerDiv>
-    </OuterDiv>
+        <RightDiv isCollapsed={isCollapsed}>
+          <div>Visit the Hospi</div>
+          <div>Settings</div>
+        </RightDiv>
+      </MenuLowDiv>
+    </MenuOuterDiv>
   );
 }

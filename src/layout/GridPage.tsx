@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import TopMenu from '../components/TopMenu';
-import OuterPage from './OuterPage';
+import MainPage from './MainPage';
 
 const BoxDiv = styled.div`
   border: 3px solid black;
@@ -23,19 +23,13 @@ const MainGrid = styled.div`
 
 const TopAreaDiv = styled.div`
   grid-area: a;
-  background: lightgreen;
-  /* border: 4px transparent solid; */
-  /* border-radius: 16px; */
 `;
-
 const MainDiv = styled.div`
-  grid-area: b;
-  background: whitesmoke;
+  grid-area: b;  
 `;
 
 const BottomDiv = styled.div`
   grid-area: c;
-  background: lightgreen;
 `;
 
 
@@ -46,7 +40,7 @@ export default function GridPage() {
         <TopMenu />
       </TopAreaDiv>
       <MainDiv>
-        <OuterPage />
+        <MainPage />
       </MainDiv>
 
       <BottomDiv>
