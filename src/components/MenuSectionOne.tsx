@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { ReactComponent as ArrowCollapseRC } from '../assets/icons/arrow-collapse-left.svg';
 import { ReactComponent as HumbergerRC } from '../assets/icons/menu-hamburger.svg';
-import { ReactComponent as ArrowRightRC } from '../assets/icons/arrow-right-Google.svg';
 
 /* 
 The MenuSection consists of three parts
@@ -25,49 +24,38 @@ const useGetScreenWidth = () => {
 };
 
 const MenuOuterDiv = styled.div`
-  box-shadow: 3px 0px 4px 2px rgba(0, 0, 0, 0.3);
-  /* box-shadow: 4px 0px 4px 2px rgba(0, 0, 0, 0.2); */
+  /* box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.3); */
+  /* box-shadow: 3px 4px 4px 12px rgba(0, 0, 0, 0.2); */
 
   margin: 0;
-  margin-right: 5px;
+  margin-right: 0px;
   height: 100%;
   display: flex;
   flex-direction: column;
 `;
 
 // background: linear-gradient(#006A97,#0195CD );
-// background-image: linear-gradient(rgb(0, 106, 151), rgb(1, 149, 205));
 
 const MenuTopDiv = styled.div`
-  /* background: linear-gradient(#006a97, #0195cd); */
   background: rgb(0, 106, 151);
   flex: 0 0 50px;
   display: flex;
   justify-content: flex-end;
 `;
 
-const MenuLowDiv = styled.div`
+const MenuLowDiv = styled.div<{ isCollapsed: boolean }>`
   flex: 1 1 auto;
 
-  /* Display */
   display: flex;
   flex-flow: row nowrap;
-`;
-
-const RightDiv = styled.div<{ isCollapsed: boolean }>`
   background: #0195cd;
+ background-image: linear-gradient(to left,  rgb(1, 149, 205),rgb(0, 106, 151));
+
   overflow: hidden;
   padding-left:5px;
-  width: ${props => (props.isCollapsed ? '0' : '999px')};
-  max-width: ${props => (props.isCollapsed ? '0' : '150px')};
+  width: ${props => (props.isCollapsed ? '60px' : '120px')};
+  /* max-width: ${props => (props.isCollapsed ? '0' : '150px')}; */
   transition: width 600ms ease-out, max-width 600ms ease-out;
-  
-`;
-
-const LeftDiv = styled.div`
-  background: linear-gradient(to right, #006a97, #0195cd);
-  border-right: 1px black solid;
-  flex: 1 1 auto;
   
 `;
 
@@ -107,13 +95,9 @@ const XHumburger = styled(HumbergerRC)`
   }
 `;
 
-const KIcons = styled.div`
-  margin: 10px;
-`;
-
-export default function MenuSection() {
+export default function MenuSectionOne() {
   const sw = useGetScreenWidth();
-  const isScreenSizeSmall = sw < 900;
+  const isScreenSizeSmall = sw < 400;
   const [isCollapsed, setBarToCollapse] = useState(isScreenSizeSmall);
 
   if (isScreenSizeSmall && !isCollapsed) {
@@ -133,20 +117,10 @@ export default function MenuSection() {
           {isCollapsed ? <XHumburger /> : <XArrowCollapse />}
         </XBtn>
       </MenuTopDiv>
-      <MenuLowDiv>
-        <LeftDiv>
-          <KIcons>
-            <ArrowRightRC />
-          </KIcons>
-          <KIcons>
-            <ArrowCollapseRC />
-          </KIcons>
-        </LeftDiv>
 
-        <RightDiv isCollapsed={isCollapsed}>
-          <div>Visit the Hospi</div>
-          <div>Settings</div>
-        </RightDiv>
+      <MenuLowDiv isCollapsed={isCollapsed}>
+        <div>Visit the Hospi</div>
+        <div>Settings</div>
       </MenuLowDiv>
     </MenuOuterDiv>
   );
